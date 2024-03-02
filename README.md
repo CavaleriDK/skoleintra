@@ -2,7 +2,8 @@
 <p align="center"> Uofficiel API for ItsLearning's SkoleIntra til NodeJS.</p>
 
 # Getting started
-
+ ![NPM Version](https://img.shields.io/npm/v/skoleintra) ![Node LTS](https://img.shields.io/node/v-lts/skoleintra) ![NPM License](https://img.shields.io/npm/l/skoleintra)
+ 
 ForældreIntra er en del af SkoleIntra, som brugers af folkeskoler til kommunikation mellem skole og hjem. Denne NPM pakke logger automatisk på ForældreIntra og kan hente et barns kalender, ugeskema og ugeplaner.
 
 Bemærk at dette bibliotek ikke er udviklet af ItsLearning, men er et uofficielt program. Hvis du oplever fejl må du meget gerne indrapportere dem på [Issues](https://github.com/CavaleriDK/skoleintra/issues).

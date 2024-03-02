@@ -12,6 +12,9 @@
     "test": "jest --detectOpenHandles --forceExit --config jest.config.js",
     "test:debug": "SKOLEINTRA_TEST_WITH_DEBUG=true jest --detectOpenHandles --forceExit --config jest.config.js"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/CavaleriDK/skoleintra.git"
@@ -24,9 +27,9 @@
   "author": "Michael Cavaleri",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/***/***/issues"
+    "url": "https://github.com/CavaleriDK/skoleintra/issues"
   },
-  "homepage": "https://github.com/***/***/#readme",
+  "homepage": "https://github.com/CavaleriDK/skoleintra",
   "devDependencies": {
     "@types/jest": "29.5.12",
     "@types/puppeteer": "7.0.4",
