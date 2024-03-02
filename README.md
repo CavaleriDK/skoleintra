@@ -94,7 +94,7 @@ På nuværende tidspunkt er det muligt at hente et barns aktivitetsekalender, ug
 
 Du er også mere end velkommen til at fortsætte udviklingen af biblioteket her og sende dine egne pull requests ind.
 
-Kig også gerne med på [issues siden](https://github.com/CavaleriDK/typescript-module-template/issues), hvis der skulle være nogle åbne fejlrapporter.
+Kig også gerne med på [issues siden](https://github.com/CavaleriDK/skoleintra/issues), hvis der skulle være nogle åbne fejlrapporter.
 
 ## License
 
