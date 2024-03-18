@@ -71,23 +71,13 @@ instance.initialize('Pool=nsiu SsoSelectedSchoo...');
   .finally(() => instance.closeAll());
 ```
 
-### Flere indstillinger
+### Chromium version
 
-Biblioteket vil automatisk hente en version af Chromium ned, når du kører det første gang. Det kan du skippe ved at overskrive standardkonfigurationerne.
+Biblioteket vil ikke automatisk hente en version af Chromium ned, når du kører det første gang. Derfor skal du pege ind på den version af Chrome eller en Chromium-baseret browser, som du vil lade biblioteket anvende.
 
-Lav en ny fil i root på dit projekt med titlen `puppeteerrc.cjs`. Her indsætter du følgende konfigurationer og overskriver med den absolutte sti til din egen Chrome eller Chromium-baseret browser som du vil bruge i stedet.
+For at vælge dette, skal du sætte environment-variablen `PUPPETEER_EXECUTABLE_PATH` op med den absolutte sti til hvilken browser du vil bruge. 
 
-```cjs
-module.exports = {
-    skipDownload: true,
-    executablePath: "Indtast stien til dit Chrome/Chromium browser",
-
-    // Eksempel for Mac brugere
-    // executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", 
-};
-```
-
-Flere konfigurationer kan du læse om på dokumentationen: https://pptr.dev/api/puppeteer.configuration
+Eksempel: `PUPPETEER_EXECUTABLE_PATH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'`.
 
 ## Deltagelse og videre udvikling
 

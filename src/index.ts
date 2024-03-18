@@ -55,6 +55,7 @@ class SkoleIntra {
         this.browser = await puppeteer.launch({
             args: ['--window-size=1920,1080'],
             headless: !process.env.SKOLEINTRA_TEST_WITH_DEBUG,
+            executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
         });
         this.page = await this.browser.newPage();
         await this.page.setExtraHTTPHeaders({ ...requestHeaders });
