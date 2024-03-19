@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CavaleriDK/skoleintra.git"
+    "url": "git+https://github.com/CavaleriDK/skoleintra.git"
   },
   "keywords": [
     "skoleintra",
@@ -45,7 +45,9 @@
     "typescript": "5.3.3"
   },
   "files": [
-    "lib/**/*"
+    "dist/**/*",
+    "src/index",
+    "src/helpers/**/*"
   ],
   "dependencies": {
     "puppeteer-core": "22.2.0",
