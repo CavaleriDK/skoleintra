@@ -1,7 +1,7 @@
 import { Browser, HTTPResponse, Page } from 'puppeteer';
 import DatetimeHelper from './helpers/datetimehelper';
 import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import StealthPlugin = require('puppeteer-extra-plugin-stealth');
 
 class SkoleIntra {
     private browser?: Browser;
