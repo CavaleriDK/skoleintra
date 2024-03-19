@@ -1,6 +1,6 @@
 {
   "name": "skoleintra",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Node module to fetch data from ItsLearnings skoleintra platform",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
