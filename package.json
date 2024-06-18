@@ -50,7 +50,7 @@
     "src/helpers/**/*"
   ],
   "dependencies": {
-    "puppeteer-core": "22.2.0",
+    "puppeteer-core": "22.11.2",
     "puppeteer-extra": "3.3.6",
     "puppeteer-extra-plugin-stealth": "2.11.2"
   }
