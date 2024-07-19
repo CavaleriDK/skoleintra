@@ -10,8 +10,7 @@
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --fix --ext .js,.ts",
-    "test": "jest --detectOpenHandles --forceExit --config jest.config.js",
-    "test:debug": "SKOLEINTRA_TEST_WITH_DEBUG=true jest --detectOpenHandles --forceExit --config jest.config.js"
+    "test": "jest --config jest.config.js"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -33,7 +32,7 @@
   "homepage": "https://github.com/CavaleriDK/skoleintra",
   "devDependencies": {
     "@types/jest": "29.5.12",
-    "@types/puppeteer": "7.0.4",
+    "@types/tough-cookie": "4.0.5",
     "@typescript-eslint/eslint-plugin": "7.0.2",
     "@typescript-eslint/parser": "7.0.2",
     "dotenv": "16.4.5",
@@ -50,8 +49,9 @@
     "src/helpers/**/*"
   ],
   "dependencies": {
-    "puppeteer-core": "22.2.0",
-    "puppeteer-extra": "3.3.6",
-    "puppeteer-extra-plugin-stealth": "2.11.2"
+    "axios": "1.7.2",
+    "axios-cookiejar-support": "5.0.2",
+    "node-html-parser": "6.1.13",
+    "tough-cookie": "4.1.4"
   }
 }

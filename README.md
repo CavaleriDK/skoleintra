@@ -8,6 +8,8 @@ ForældreIntra er en del af SkoleIntra, som brugers af folkeskoler til kommunika
 
 Bemærk at dette bibliotek ikke er udviklet af ItsLearning, men er et uofficielt program. Hvis du oplever fejl må du meget gerne indrapportere dem på [Issues](https://github.com/CavaleriDK/skoleintra/issues).
 
+Biblioteket her er skabt i forbindelse med et ønske om at tilgå Skoleintra automatisk, for at vise skoleskema og ugeplaner på vores hjemme dashboard. [Det kan du læse mere om her](https://cavaleri.dk/blog/gaining-access-to-skoleintra-calendar/)
+
 ## Opsætning
 
 Du henter og installerer pakken ved at køre `npm install skoleintra`
@@ -39,16 +41,23 @@ import SkoleIntra from 'skoleintra'
 
 const instance = new SkoleIntra('brugernavn', 'adgangskode', 'https://MIN_SKOLE.m.skoleintra.dk');
 
-instance.initialize()
-  .then(() => instance.getWeeklySchedule(new Date(), false))
+instance.getWeeklySchedule(new Date()))
   .then((schedule) => {
       console.log(schedule);
   })
-  .then(() => instance.getWeeklyPlan(new Date(), false))
+  .then(() => instance.getWeeklyPlan(new Date()))
   .then((plan) => {
       console.log(plan);
   })
-  .finally(() => instance.closeAll());
+
+// Eller med await/async
+
+const weeklySchedule = await instance.getWeeklySchedule(new Date()));
+console.log(weeklySchedule);
+
+const weeklyPlan = await instance.getWeeklyPlan(new Date());
+console.log(weeklyPlan);
+
 ```
 ### Brug eksisterende cookie
 
@@ -56,28 +65,26 @@ Det hænder af og til at du bliver blokkeret fra automatisk at logge ind. Når d
 
 > Error: Request was blocked by automation protection. Try initializing SkoleIntra with an existing cookie.
 
-For at omgå den blokkering, kan du kalde `initialize()` med en cookie-streng, efter at have logget ind første gang i din normale browser. Biblioketet er vil stadig automatisk logge ind for dig efterfølgende, men det lader SkoleIntra forstå at du allerede har besøgt deres platform som bruger tidligere og så blokkerer de ikke efterfølgende kald til deres side.
+For at omgå den blokkering, kan du kalde `setCookies()` med en cookie-streng, efter at have logget ind første gang i din normale browser. Biblioketet vil stadig automatisk logge ind for dig efterfølgende, men det lader SkoleIntra forstå at du allerede har besøgt deres platform som bruger tidligere og så blokkerer de ikke efterfølgende kald til deres side.
 
 ```js
 import SkoleIntra from 'skoleintra'
 
 const instance = new SkoleIntra('brugernavn', 'adgangskode', 'https://MIN_SKOLE.m.skoleintra.dk');
 
-instance.initialize('Pool=nsiu SsoSelectedSchoo...');
-  .then(() => instance.getCalendarActivitiesByMonth("2024-02-29", false))
+instance.setCookies('Pool=nsiu SsoSelectedSchoo...')
+  .then(() => instance.getCalendarActivitiesByMonth("2024-02-29"))
   .then((calendar) => {
       console.log(calendar);
   })
-  .finally(() => instance.closeAll());
+
+// eller med async/await
+
+await instance.setCookies('Pool=nsiu SsoSelectedSchoo...');
+const calendarActivities = await instance.getCalendarActivitiesByMonth("2024-02-29"));
+
+console.log(calendarActivities);
 ```
-
-### Chromium version
-
-Biblioteket vil ikke automatisk hente en version af Chromium ned, når du kører det første gang. Derfor skal du pege ind på den version af Chrome eller en Chromium-baseret browser, som du vil lade biblioteket anvende.
-
-For at vælge dette, skal du sætte environment-variablen `PUPPETEER_EXECUTABLE_PATH` op med den absolutte sti til hvilken browser du vil bruge. 
-
-Eksempel: `PUPPETEER_EXECUTABLE_PATH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'`.
 
 ## Deltagelse og videre udvikling
 

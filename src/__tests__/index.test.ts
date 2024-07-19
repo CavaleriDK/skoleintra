@@ -1,5 +1,5 @@
 import { expect, describe, test, beforeAll } from '@jest/globals';
-import SkoleIntra from '../index';
+import SkoleIntra, { CalendarActivity, WeeklyPlan, WeeklySchedule } from '../index';
 import 'dotenv/config';
 
 describe('Full feature test suite', () => {
@@ -13,36 +13,31 @@ describe('Full feature test suite', () => {
         );
     });
 
+    test('No cookies set by default', async () => {
+        const cookies = await skoleIntraInstance.getCookies();
+        expect(cookies).toBe('');
+    });
+
+    test('Custom cookies set', async () => {
+        await skoleIntraInstance.setCookies('UniUserRole=Parent; UserRole=Parent; Language=Danish;');
+        const cookies = await skoleIntraInstance.getCookies();
+        expect(cookies).toBe('UniUserRole=Parent; UserRole=Parent; Language=Danish');
+    });
+
     test('Get calendar activities', async () => {
-        const json = await skoleIntraInstance.getCalendarActivitiesByMonth(new Date());
-        expect(json).not.toBe('');
-    }, 30000);
+        const data: CalendarActivity[] = await skoleIntraInstance.getCalendarActivitiesByMonth(new Date());
+        expect(Array.isArray(data)).toBe(true);
+    });
 
     test('Get calendar lessons', async () => {
-        const html = await skoleIntraInstance.getWeeklySchedule(new Date());
-        expect(html).not.toBe('');
-    }, 30000);
+        const weeklySchedule: WeeklySchedule = await skoleIntraInstance.getWeeklySchedule(new Date());
+        expect(weeklySchedule).toHaveProperty('timeSlots');
+        expect(weeklySchedule).toHaveProperty('dateSchedules');
+    });
 
     test('Get week plan', async () => {
-        const html = await skoleIntraInstance.getWeeklyPlan(new Date());
-        expect(html).not.toBe('');
-    }, 30000);
-
-    test('Chaining all methods', async () => {
-        return skoleIntraInstance
-            .initialize()
-            .then(() => skoleIntraInstance.getCalendarActivitiesByMonth(new Date(), false))
-            .then((activities) => {
-                expect(activities).not.toBe('');
-            })
-            .then(() => skoleIntraInstance.getWeeklySchedule(new Date(), false))
-            .then((schedule) => {
-                expect(schedule).not.toBe('');
-            })
-            .then(() => skoleIntraInstance.getWeeklyPlan(new Date(), false))
-            .then((plan) => {
-                expect(plan).not.toBe('');
-            })
-            .finally(() => skoleIntraInstance.closeAll());
-    }, 30000);
+        const weeklyPlan: WeeklyPlan = await skoleIntraInstance.getWeeklyPlan(new Date());
+        expect(weeklyPlan).toHaveProperty('generalPlan');
+        expect(weeklyPlan).toHaveProperty('dailyPlans');
+    });
 });
