@@ -30,9 +30,7 @@ const kalendar = await instance.getCalendarActivitiesByMonth(Date.now());
 
 ### Promises
 
-Da alle metoder er asynkrone er returnerer et Promise, er det muligt chaine flere metoder sammen. For at kunne chaine flere metoder sammen, er det vigtigt at du først kalder metoden `initialize()` og at du altid kalder `closeAll()` afslutningsvist.
-
-`initialize()` sørger for at starte en ny Chromium instans op i baggrunden, og `closeAll()` sørger for altid at lukke ned for samme browser instans.
+Da alle metoder er asynkrone er returnerer et Promise, er det muligt chaine flere metoder sammen. 
 
 Se dette eksempel på at hente skoleskema og efterfølgende ugeplanen for et barn.
 
